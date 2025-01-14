@@ -5,7 +5,6 @@ import io.micronaut.function.aws.proxy.payload1.ApiGatewayProxyRequestEventFunct
 import io.micronaut.function.aws.proxy.MockLambdaContext
 import io.micronaut.http.HttpMethod
 import io.micronaut.http.HttpStatus
-import io.micronaut.json.tree.JsonNode
 import spock.lang.AutoCleanup
 import spock.lang.Shared
 import spock.lang.Specification

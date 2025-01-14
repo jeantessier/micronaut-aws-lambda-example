@@ -31,8 +31,8 @@ application {
     mainClass = "micronaut.aws.lambda.example.Application"
 }
 java {
-    sourceCompatibility = JavaVersion.toVersion("17")
-    targetCompatibility = JavaVersion.toVersion("17")
+    sourceCompatibility = JavaVersion.toVersion("21")
+    targetCompatibility = JavaVersion.toVersion("21")
 }
 
 
@@ -64,7 +64,7 @@ micronaut {
 
 
 tasks.named("dockerfileNative") {
-    jdkVersion = "17"
+    jdkVersion = "21"
     args(
         "-XX:MaximumHeapSizePercent=80",
         "-Dio.netty.allocator.numDirectArenas=0",

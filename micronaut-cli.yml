@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: micronaut.aws.lambda.example
+testFramework: spock
+sourceLanguage: groovy
+buildTool: gradle
+features: [amazon-api-gateway, app-name, aws-lambda, aws-lambda-events-serde, aws-lambda-handler-default, gradle, groovy, groovy-application, http-client-test, logback, micronaut-aot, micronaut-build, micronaut-http-validation, properties, readme, serialization-jackson, shade, snapstart, spock, static-resources, x86]

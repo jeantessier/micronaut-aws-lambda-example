@@ -29,7 +29,7 @@ class HomeControllerSpec extends Specification {
         response.getBody() == "{\"message\":\"Hello World\"}"
     }
 
-    def "test name"() {
+    def "test handler with name"() {
         given:
         def name = "Jean"
 
@@ -45,6 +45,38 @@ class HomeControllerSpec extends Specification {
         then:
         response.statusCode.intValue() == HttpStatus.OK.code
         response.getBody() == "{\"message\":\"Hello ${name}\"}"
+    }
+
+    def "test second handler"() {
+        given:
+        APIGatewayProxyRequestEvent request = new APIGatewayProxyRequestEvent()
+        request.path = "/micronaut-aws-lambda-example"
+        request.httpMethod = HttpMethod.GET as String
+
+        when:
+        def response = handler.handleRequest(request, new MockLambdaContext())
+
+        then:
+        response.statusCode.intValue() == HttpStatus.OK.code
+        response.getBody() == "{\"message\":\"For the second time: Hello World\"}"
+    }
+
+    def "test second handler with name"() {
+        given:
+        def name = "Jean"
+
+        and:
+        APIGatewayProxyRequestEvent request = new APIGatewayProxyRequestEvent()
+        request.path = "/micronaut-aws-lambda-example"
+        request.httpMethod = HttpMethod.GET as String
+        request.queryStringParameters = [ name: name ]
+
+        when:
+        def response = handler.handleRequest(request, new MockLambdaContext())
+
+        then:
+        response.statusCode.intValue() == HttpStatus.OK.code
+        response.getBody() == "{\"message\":\"For the second time: Hello ${name}\"}"
     }
 
 }
